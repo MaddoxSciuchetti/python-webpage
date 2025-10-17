@@ -1,23 +1,21 @@
 {% extends 'handyman/base.html'%}
 
 {%block content%}
+  <div class="mb-4">
+    <h2 class="mb-1">{{ topic.text }}</h2>
+  </div>
 
-  <p>Topic: {{topic.text}}</p>
-  <p>
- 
-  </p>
-
-  <ul>
-    {% for entry in entries%}
-      <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
-        <p>
-        </p>
-      </li>
+  <div class="vstack gap-3">
+    {% for entry in entries %}
+      <div class="card">
+        <div class="card-body">
+          <div class="small text-muted mb-2">{{ entry.date_added|date:'M d, Y H:i' }}</div>
+          <div class="card-text">{{ entry.text|linebreaks }}</div>
+        </div>
+      </div>
     {% empty %}
-      <li>There are not entires for this topic yet</li>
+      <div class="alert alert-info">There are no entries for this topic yet.</div>
     {% endfor %}
-  </ul>
+  </div>
 
 {% endblock content %}
