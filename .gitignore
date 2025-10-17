@@ -1,0 +1,3 @@
+mad_env/
+_pycache__/
+*.sqlite3
